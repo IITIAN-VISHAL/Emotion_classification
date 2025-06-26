@@ -8,28 +8,32 @@ from keras.models import load_model
 from tensorflow.keras.layers import Layer
 import tensorflow.keras.backend as K
 
+import tensorflow as tf
+from tensorflow.keras.layers import Layer
+from tensorflow.keras.models import load_model
+
+# ✅ 1. Define your custom AttentionLayer
 class AttentionLayer(Layer):
     def __init__(self, **kwargs):
         super(AttentionLayer, self).__init__(**kwargs)
 
     def build(self, input_shape):
-        self.W = self.add_weight(name='att_weight', shape=(input_shape[-1], 1),
-                                 initializer='normal', trainable=True)
-        self.b = self.add_weight(name='att_bias', shape=(input_shape[1], 1),
-                                 initializer='zeros', trainable=True)
+        self.W = self.add_weight(name="att_weight", shape=(input_shape[-1], 1), initializer="normal")
+        self.b = self.add_weight(name="att_bias", shape=(input_shape[1], 1), initializer="zeros")
         super(AttentionLayer, self).build(input_shape)
 
     def call(self, x):
-        e = K.tanh(K.dot(x, self.W) + self.b)
-        a = K.softmax(e, axis=1)
+        e = tf.keras.backend.tanh(tf.keras.backend.dot(x, self.W) + self.b)
+        a = tf.keras.backend.softmax(e, axis=1)
         output = x * a
-        return K.sum(output, axis=1)
+        return tf.keras.backend.sum(output, axis=1)
 
-    def compute_output_shape(self, input_shape):
-        return (input_shape[0], input_shape[-1])
+    def get_config(self):
+        config = super(AttentionLayer, self).get_config()
+        return config
 
-# Load model
-model = tf.keras.models.load_model('Emotion_classifier.h5',custom_objects={'AttentionLayer': AttentionLayer})
+# ✅ 2. Load the model with the custom object
+model = load_model("Emotion_classifier.h5", custom_objects={'AttentionLayer': AttentionLayer})
 
 def extract_features(file_path):
     audio, sample_rate = librosa.load(file_path, sr=None)
