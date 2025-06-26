@@ -1,0 +1,8 @@
+streamlit==1.33.0
+tensorflow
+torch==2.1.0
+scikit-learn==1.1.2
+librosa==0.10.1
+numpy==1.24.4
+matplotlib==3.7.2
+soundfile==0.12.1
