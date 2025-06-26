@@ -59,19 +59,19 @@ Input shape to the model: (248, 121)
 ---
 
 ## 😊 Emotions Covered
+01 = neutral, 02 = calm, 03 = happy, 04 = sad, 05 = angry, 06 = fearful, 07 = disgust, 08 = surprised)
 
 | Label | Emotion     |
-|-------|-------------|
-| 0     | Angry       |
-| 1     | Calm        |
-| 2     | Disgust     |
-| 3     | Fearful     |
-| 4     | Happy       |
-| 5     | Neutral     |
-| 6     | Sad         |
-| 7     | Surprised   |
-
----
+|-------|-------------|    |
+| 1     | Neutral     |
+| 2     | Calm        |
+| 3     | Hsppy       |
+| 4     | Sad         |
+| 5     | Angry       |
+| 6     | Fearful     |
+| 7     | Disgust     |
+| 8     | Surprised   |
+-----------------------
 
 ## 🌐 Streamlit App Workflow
 
