@@ -33,7 +33,7 @@ class AttentionLayer(Layer):
         return config
 
 # ✅ 2. Load the model with the custom object
-model = load_model("Emotion_classifier.h5", custom_objects={'AttentionLayer': AttentionLayer})
+model = load_model("Emotion_classifier_model.keras", custom_objects={'AttentionLayer': AttentionLayer})
 
 def extract_features(file_path):
     audio, sample_rate = librosa.load(file_path, sr=None)
