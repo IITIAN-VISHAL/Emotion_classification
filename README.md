@@ -65,7 +65,7 @@ Input shape to the model: (248, 121)
 |-------|-------------|    |
 | 1     | Neutral     |
 | 2     | Calm        |
-| 3     | Hsppy       |
+| 3     | Happy       |
 | 4     | Sad         |
 | 5     | Angry       |
 | 6     | Fearful     |
